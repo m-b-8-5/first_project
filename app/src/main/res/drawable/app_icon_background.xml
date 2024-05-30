@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:layout_height="wrap_content">
+            <solid android:color="@android:color/black" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <gradient android:type="radial"
+                android:gradientRadius="100%"
+                android:startColor="#68437A"
+                android:centerX="0.3"
+                android:centerY="0.1"
+                android:endColor="#341F3E" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <gradient android:type="radial"
+                android:gradientRadius="50%"
+                android:startColor="#8F6105"
+                android:centerX="0.2" android:centerY="0.1"
+                android:endColor="#004A4303" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <gradient android:type="radial"
+                android:gradientRadius="40%"
+                android:startColor="#093D50"
+                android:centerX="0.8"
+                android:centerY="0.1"
+                android:endColor="@android:color/transparent" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <gradient android:type="radial"
+                android:gradientRadius="100%"
+                android:startColor="#3F5304"
+                android:centerX="0.2"
+                android:centerY="0.8"
+                android:endColor="#00033905" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <gradient android:type="radial"
+                android:gradientRadius="50%"
+                android:startColor="#600808"
+                android:centerX="0.7"
+                android:centerY="0.85"
+                android:endColor="@android:color/transparent" />
+        </shape>
+    </item>
+</layer-list>

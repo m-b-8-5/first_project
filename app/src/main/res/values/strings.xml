@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">♡mine♡</string>
+
+    <string name="animation_btn">anim</string>
+
+    <!-- common-->
+    <string name="year">WHEN</string>
+    <string name="month">FOR WHAT</string>
+    <string name="day">HOW MUCH</string>
+
+    <!-- top screen-->
+    <string name="top_screen">HOME</string>
+    <string name="input_when_title">WHEN</string>
+    <string name="input_for_what_title">FOR WHAT</string>
+    <string name="input_how_much_title">HOW MUCH</string>
+
+    <!-- input list screen-->
+    <string name="input_list_screen">INPUT LIST</string>
+</resources>

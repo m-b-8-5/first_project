@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.NFC"/>
+    <uses-feature android:name="android.hardware.nfc" android:required="true"/>
+
+    <application
+        android:name=".app.MyApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/app_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/app_icon_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.App.First"
+        tools:targetApi="31">
+
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:theme="@style/Theme.App.First"
+            android:exported="true">
+
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+
+        <activity
+            android:name=".ui.nfc.NfcActivity"
+            android:theme="@style/Theme.MyApplication"
+            android:launchMode="singleTask"
+            android:exported="true">
+
+            <!-- NFC インテントのフィルタ種類で実装が変わるが、NDEF_DISCOVEREDが一番recommendらしい-->
+            <!-- NDEF_DISCOVERED：優先度が最も高い-->
+<!--                            <intent-filter>-->
+<!--                                <action android:name="android.intent.action.MAIN" />-->
+<!--                                <category android:name="android.intent.category.LAUNCHER" />-->
+
+<!--                                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>-->
+<!--                                <category android:name="android.intent.category.DEFAULT"/>-->
+<!--                                <data android:mimeType="text/plain" />-->
+<!--                            </intent-filter>-->
+
+            <!-- TECH_DISCOVERED：該当のtechList（@xml/nfc_tech_list）が含まれていれば起動可能-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.nfc.action.TECH_DISCOVERED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+            <meta-data android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/nfc_tech_list" />
+
+            <!-- TAG_DISCOVERED：ACTION_TECH_DISCOVERED インテントを処理するアクティビティがない場合-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.nfc.action.TAG_DISCOVERED"/>-->
+<!--            </intent-filter>-->
+        </activity>
+    </application>
+
+</manifest>
