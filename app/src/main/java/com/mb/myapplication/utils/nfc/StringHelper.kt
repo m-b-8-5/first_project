@@ -4,7 +4,7 @@ object StringHelper {
     fun byteToHex(b : ByteArray) : String{
         var s = ""
         for (element in b){
-            s += "[%02X]".format(element)
+            s += element
         }
         return s
     }

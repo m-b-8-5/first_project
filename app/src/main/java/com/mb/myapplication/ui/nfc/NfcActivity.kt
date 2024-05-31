@@ -47,9 +47,7 @@ fun Nfc(
 ) {
 //    val uiState by viewModel.uiState.collectAsState()
     val nfcResult  = remember { mutableStateOf("") }
-    val messageResult = remember { mutableStateOf("") }
-    val rawMessageResult = remember { mutableStateOf("") }
-    val errorResult = remember { mutableStateOf("") }
+    val results = mutableListOf<String>()
     val lifecycleOwner = LocalLifecycleOwner.current
     val context: Context = LocalContext.current
     val activity = (context as ComponentActivity)
@@ -63,6 +61,7 @@ fun Nfc(
         override fun onReadTag(tag : Tag) {
             val idm : ByteArray = tag.id
             nfcResult.value = StringHelper.byteToHex(idm)
+            results.add(StringHelper.byteToHex(idm))
         }
         override fun onConnect() {
 
@@ -79,14 +78,17 @@ fun Nfc(
                         NfcAdapter.ACTION_NDEF_DISCOVERED -> {
                             viewModel.processIntent(activity.intent)
                             nfcResult.value = viewModel.nfcResult
+                            results.add(nfcResult.value)
                         }
                         NfcAdapter.ACTION_TAG_DISCOVERED -> {
                             viewModel.processIntent(activity.intent)
                             nfcResult.value = viewModel.nfcResult
+                            results.add(nfcResult.value)
                         }
                         NfcAdapter.ACTION_TECH_DISCOVERED -> {
                             viewModel.processIntent(activity.intent)
                             nfcResult.value = viewModel.nfcResult
+                            results.add(nfcResult.value)
                         }
                     }
                 }
@@ -137,7 +139,7 @@ fun Nfc(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center,
             ) {
-                NfcScreen(nfcResult.value, errorResult.value, messageResult.value, rawMessageResult.value)
+                NfcScreen(nfcResult.value, results)
             }
         }
     }
